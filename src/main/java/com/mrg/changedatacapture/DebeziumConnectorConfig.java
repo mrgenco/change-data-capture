@@ -53,7 +53,7 @@ public class DebeziumConnectorConfig {
                 .with("database.server.name", "customer-db")
                 .with("database.history", "io.debezium.relational.history.FileDatabaseHistory")
                 .with("database.history.file.filename", dbHistoryTempFile.getAbsolutePath())
-                .with("topic.prefix", "my-app-connector")
+                .with("topic.prefix", "topic-customer")
                 .with("schema.history.internal","io.debezium.storage.file.history.FileSchemaHistory")
                 .with("schema.history.internal.file.filename","schemahistory.dat")
                 .build();
