@@ -1,6 +1,6 @@
 package com.mrg.changedatacapture;
 
-import com.mrg.changedatacapture.customer.CustomerService;
+import com.mrg.changedatacapture.customer.CustomerRatingsService;
 import io.debezium.config.Configuration;
 
 import io.debezium.data.Envelope;
@@ -31,14 +31,14 @@ public class DebeziumListener {
 
     private final Executor executor = Executors.newSingleThreadExecutor();
     private final DebeziumEngine<RecordChangeEvent<SourceRecord>> debeziumEngine;
-    private final CustomerService customerService;
+    private final CustomerRatingsService customerRatingsService;
 
-    public DebeziumListener(Configuration customerConnectorConfiguration, CustomerService customerService) {
+    public DebeziumListener(Configuration customerConnectorConfiguration, CustomerRatingsService customerRatingsService) {
         this.debeziumEngine = DebeziumEngine.create(ChangeEventFormat.of(Connect.class))
                 .using(customerConnectorConfiguration.asProperties())
                 .notifying(this::handleChangeEvent)
                 .build();
-        this.customerService = customerService;
+        this.customerRatingsService = customerRatingsService;
     }
 
     private void handleChangeEvent(RecordChangeEvent<SourceRecord> sourceRecordRecordChangeEvent) {
@@ -68,7 +68,7 @@ public class DebeziumListener {
                             ));
 
                     if(payload != null) {
-                        this.customerService.replicateData(payload, operation);
+                        this.customerRatingsService.replicateData(payload, operation);
                         log.info("Updated Data: {} with Operation: {}", payload, operation.name());
                     }
                 }
