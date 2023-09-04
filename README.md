@@ -16,3 +16,11 @@
     RatingScore VARCHAR(5),
     AnalysisType SMALLINT
 );`
+
+
+### Example MySQL configuration for enabling Change Data Capture
+
+`GRANT SELECT, RELOAD, SHOW DATABASES, REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO 'mrgenco' IDENTIFIED BY 'admin';
+FLUSH PRIVILEGES;
+SET GLOBAL binlog_format = 'ROW';
+SET GLOBAL binlog_row_image = 'FULL';`
