@@ -32,7 +32,7 @@ public class CustomerRatingsService {
                     customerRating.setCustomerNo((String) customerRatingData.getValue());
             }
 
-            if (Envelope.Operation.DELETE == operation) {
+            if (Envelope.Operation.DELETE.equals(operation)) {
                 customerRepository.deleteById(customerRating.getId());
             } else {
                 customerRepository.save(customerRating);
