@@ -1,7 +1,5 @@
 package com.mrg.changedatacapture.customer;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import io.debezium.data.Envelope;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +18,7 @@ public class CustomerRatingsService {
         try {
             final CustomerRatings customerRating = new CustomerRatings();
 
-            // TODO : this is temporary, use ObjectMapper instead
+            // TODO : this is temporary, use ModelMapper instead
             for(Map.Entry<String, Object> customerRatingData : customerData.entrySet()){
                 if(customerRatingData.getKey().equals("Id"))
                     customerRating.setId((Integer) customerRatingData.getValue());

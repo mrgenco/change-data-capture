@@ -1,5 +1,4 @@
-package com.mrg.changedatacapture;
-import io.debezium.config.CommonConnectorConfig;
+package com.mrg.changedatacapture.cdc;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

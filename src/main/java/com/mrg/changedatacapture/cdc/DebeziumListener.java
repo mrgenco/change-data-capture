@@ -1,4 +1,4 @@
-package com.mrg.changedatacapture;
+package com.mrg.changedatacapture.cdc;
 
 import com.mrg.changedatacapture.customer.CustomerRatingsService;
 import io.debezium.config.Configuration;
@@ -23,7 +23,6 @@ import java.util.concurrent.Executors;
 import java.util.stream.Collectors;
 
 import static io.debezium.data.Envelope.FieldName.*;
-import static java.util.stream.Collectors.toMap;
 
 @Slf4j
 @Component
